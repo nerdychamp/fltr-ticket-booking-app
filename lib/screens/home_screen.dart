@@ -1,3 +1,4 @@
+import 'package:book_tickets/screens/ticket_view.dart';
 import 'package:book_tickets/utils/app_style.dart';
 import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,17 @@ class HomeScreen extends StatelessWidget {
       backgroundColor: Styles.bgColor,
       body: ListView(
         children: [
+          /* 
+            Heading and search bar
+           */
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
               children: [
                 const Gap(40),
+                /*
+                  heading
+                 */
                 Row(
                   children: [
                     Column(
@@ -46,6 +53,9 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 const Gap(25),
+                /*
+                  search bar
+                 */
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
@@ -68,8 +78,21 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Gap(40),
-                Row(
+              ],
+            ),
+          ),
+          const Gap(40),
+          /* 
+            ticket view
+           */
+          Column(
+            children: [
+              /*
+                upcoming tickets
+               */
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -86,11 +109,25 @@ class HomeScreen extends StatelessWidget {
                           color: primaryColor,
                         ),
                       ),
-                    )
+                    ),
                   ],
                 ),
-              ],
-            ),
+              ),
+              const Gap(15),
+              /* 
+                tickets
+               */
+              SingleChildScrollView(
+                padding: const EdgeInsets.only(left: 20),
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: const [
+                    TicketView(),
+                    TicketView(),
+                  ],
+                ),
+              )
+            ],
           )
         ],
       ),
