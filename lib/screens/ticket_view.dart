@@ -1,3 +1,4 @@
+import 'package:book_tickets/utils/app_icons.dart';
 import 'package:book_tickets/utils/app_layout.dart';
 import 'package:book_tickets/utils/app_style.dart';
 import 'package:book_tickets/widgets/thick_ring.dart';
@@ -42,9 +43,10 @@ class TicketView extends StatelessWidget {
                 Row(
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("NYC",
-                        style: Styles.headlineStyle3
-                            .copyWith(color: Colors.white)),
+                    Text(
+                      "NYC",
+                      style: headline3White,
+                    ),
                     const Spacer(),
                     const ThickRing(),
                     Expanded(
@@ -53,8 +55,10 @@ class TicketView extends StatelessWidget {
                           SizedBox(
                             height: 24,
                             child: LayoutBuilder(
-                              builder: (BuildContext context,
-                                  BoxConstraints constraints) {
+                              builder: (
+                                BuildContext context,
+                                BoxConstraints constraints,
+                              ) {
                                 final int dots =
                                     (constraints.constrainWidth() / 6).floor();
                                 return Padding(
@@ -83,8 +87,8 @@ class TicketView extends StatelessWidget {
                           Center(
                             child: Transform.rotate(
                               angle: 1.5,
-                              child: const Icon(
-                                Icons.local_airport_rounded,
+                              child: Icon(
+                                AppIcons.airport,
                                 color: Colors.white,
                               ),
                             ),
@@ -94,9 +98,10 @@ class TicketView extends StatelessWidget {
                     ),
                     const ThickRing(),
                     const Spacer(),
-                    Text("LDN",
-                        style: Styles.headlineStyle3
-                            .copyWith(color: Colors.white)),
+                    Text(
+                      "LDN",
+                      style: headline3White,
+                    ),
                   ],
                 ),
                 const Gap(3),
@@ -107,22 +112,19 @@ class TicketView extends StatelessWidget {
                       width: 100,
                       child: Text(
                         'New-York',
-                        style:
-                            Styles.headlineStyle4.copyWith(color: Colors.white),
+                        style: headline4White,
                       ),
                     ),
                     Text(
                       '8H 30M',
-                      style:
-                          Styles.headlineStyle4.copyWith(color: Colors.white),
+                      style: headline4White,
                     ),
                     SizedBox(
                       width: 100,
                       child: Text(
                         'London',
                         textAlign: TextAlign.end,
-                        style:
-                            Styles.headlineStyle4.copyWith(color: Colors.white),
+                        style: headline4White,
                       ),
                     ),
                   ],

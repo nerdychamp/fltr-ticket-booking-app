@@ -1,5 +1,5 @@
 import 'package:book_tickets/screens/home_screen.dart';
-import 'package:fluentui_icons/fluentui_icons.dart';
+import 'package:book_tickets/utils/app_icons.dart';
 import 'package:flutter/material.dart';
 
 class BottomBar extends StatefulWidget {
@@ -40,26 +40,26 @@ class _BottomBarState extends State<BottomBar> {
         showUnselectedLabels: false,
         selectedItemColor: Colors.blueGrey,
         unselectedItemColor: const Color(0xFF526480),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_home_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_home_filled),
             label: "Home",
+            icon: Icon(AppIcons.homeRegular),
+            activeIcon: Icon(AppIcons.homeFilled),
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_search_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_search_filled),
             label: "Search",
+            icon: Icon(AppIcons.searchRegular),
+            activeIcon: Icon(AppIcons.searchFilled),
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_ticket_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_ticket_filled),
             label: "Ticket",
+            icon: Icon(AppIcons.ticketRegular),
+            activeIcon: Icon(AppIcons.ticketFilled),
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentSystemIcons.ic_fluent_person_regular),
-            activeIcon: Icon(FluentSystemIcons.ic_fluent_person_filled),
             label: "Profile",
+            icon: Icon(AppIcons.personRegular),
+            activeIcon: Icon(AppIcons.personFilled),
           ),
         ],
       ),

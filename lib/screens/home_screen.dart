@@ -1,6 +1,6 @@
 import 'package:book_tickets/screens/ticket_view.dart';
+import 'package:book_tickets/utils/app_icons.dart';
 import 'package:book_tickets/utils/app_style.dart';
-import 'package:fluentui_icons/fluentui_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -67,10 +67,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                   child: Row(
                     children: [
-                      const Icon(
-                        FluentSystemIcons.ic_fluent_search_regular,
-                        color: Color(0xFFbFC205),
+                      Icon(
+                        AppIcons.searchRegular,
+                        color: const Color(0xFFbFC205),
                       ),
+                      const Gap(4),
                       Text(
                         'Search',
                         style: Styles.headlineStyle4,
