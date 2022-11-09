@@ -1,5 +1,7 @@
+import 'package:book_tickets/screens/hotel_card.dart';
 import 'package:book_tickets/screens/ticket_view.dart';
 import 'package:book_tickets/utils/app_icons.dart';
+import 'package:book_tickets/utils/app_info_list.dart';
 import 'package:book_tickets/utils/app_style.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -122,14 +124,57 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 20),
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  children: const [
-                    TicketView(),
-                    TicketView(),
-                  ],
+                  children: ticketList
+                      .map((ticket) => TicketView(ticket: ticket))
+                      .toList(),
                 ),
               )
             ],
-          )
+          ),
+          const Gap(15),
+          /* 
+            hotels list
+           */
+          Column(
+            children: [
+              /* 
+                title 
+               */
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Hotels',
+                      style: Styles.headlineStyle2,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        print("You are tapped");
+                      },
+                      child: Text(
+                        "View all",
+                        style: Styles.textStyle.copyWith(
+                          color: primaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Gap(15),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                  children: hotelList
+                      .map((hotel) => HotelCard(hotel: hotel))
+                      .toList(),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

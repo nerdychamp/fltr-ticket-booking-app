@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key});
+  const TicketView({super.key, required this.ticket});
+
+  final Map<String, dynamic> ticket;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class TicketView extends StatelessWidget {
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "NYC",
+                      ticket["from"]['code'],
                       style: headline3White,
                     ),
                     const Spacer(),
@@ -99,7 +101,7 @@ class TicketView extends StatelessWidget {
                     const ThickRing(),
                     const Spacer(),
                     Text(
-                      "LDN",
+                      ticket['to']['code'],
                       style: headline3White,
                     ),
                   ],
@@ -111,18 +113,18 @@ class TicketView extends StatelessWidget {
                     SizedBox(
                       width: 100,
                       child: Text(
-                        'New-York',
+                        ticket['from']['name'],
                         style: headline4White,
                       ),
                     ),
                     Text(
-                      '8H 30M',
+                      ticket['flying_time'],
                       style: headline4White,
                     ),
                     SizedBox(
                       width: 100,
                       child: Text(
-                        'London',
+                        ticket['to']['name'],
                         textAlign: TextAlign.end,
                         style: headline4White,
                       ),
@@ -213,14 +215,14 @@ class TicketView extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("1 May", style: headline3White),
+                    Text(ticket["date"], style: headline3White),
                     const Gap(5),
                     Text('Date', style: headline4White),
                   ],
                 ),
                 Column(
                   children: [
-                    Text('08:00 AM', style: headline3White),
+                    Text(ticket['departure_time'], style: headline3White),
                     const Gap(5),
                     Text('Departure Time', style: headline4White),
                   ],
@@ -228,7 +230,7 @@ class TicketView extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text('23', style: headline3White),
+                    Text(ticket['number'].toString(), style: headline3White),
                     const Gap(5),
                     Text('Number', style: headline4White),
                   ],
