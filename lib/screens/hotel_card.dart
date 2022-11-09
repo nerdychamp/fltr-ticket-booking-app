@@ -20,7 +20,7 @@ class HotelCard extends StatelessWidget {
 
     return Container(
       width: size.width * 0.6,
-      height: 350,
+      height: AppLayout.getHeight(350),
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
       margin: const EdgeInsets.only(right: 17, top: 5, bottom: 15),
       decoration: BoxDecoration(
@@ -38,10 +38,10 @@ class HotelCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 180,
+            height: AppLayout.getHeight(180),
             decoration: BoxDecoration(
               color: primaryColor,
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(AppLayout.getHeight(12)),
               image: DecorationImage(
                 image: AssetImage("assets/images/${hotel['image']}"),
                 fit: BoxFit.cover,
