@@ -1,5 +1,6 @@
 import 'package:book_tickets/utils/app_layout.dart';
 import 'package:book_tickets/widgets/icon_textbox.dart';
+import 'package:book_tickets/widgets/ticket_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -29,45 +30,7 @@ class SearchScreen extends StatelessWidget {
           /* 
             toggle tab bar
            */
-          FittedBox(
-            child: Container(
-              padding: const EdgeInsets.all(3.5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(AppLayout.getHeight(50)),
-                color: const Color(0xFFF4F6FD),
-              ),
-              child: Row(
-                children: [
-                  /* 
-                    airline tickets
-                   */
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 7),
-                    width: AppLayout.getWidth(size.width) * 0.44,
-                    decoration: const BoxDecoration(
-                      borderRadius:
-                          BorderRadius.horizontal(left: Radius.circular(50)),
-                      color: Colors.white,
-                    ),
-                    child: const Center(child: Text("Airline tickets")),
-                  ),
-                  /* 
-                    hotels
-                   */
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 7),
-                    width: AppLayout.getWidth(size.width) * 0.44,
-                    decoration: const BoxDecoration(
-                      borderRadius:
-                          BorderRadius.horizontal(right: Radius.circular(50)),
-                      // color: Colors.white,
-                    ),
-                    child: const Center(child: Text("Hotels")),
-                  ),
-                ],
-              ),
-            ),
-          ),
+          const AppTicketTab(firstTab: "Airline Tickets", secondTab: "Hotels"),
           Gap(AppLayout.getHeight(25)),
           /* 
             icon text-box section

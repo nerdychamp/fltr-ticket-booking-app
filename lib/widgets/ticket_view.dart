@@ -1,22 +1,32 @@
 import 'package:book_tickets/utils/app_icons.dart';
 import 'package:book_tickets/utils/app_layout.dart';
 import 'package:book_tickets/utils/app_style.dart';
+import 'package:book_tickets/widgets/dashed_line.dart';
 import 'package:book_tickets/widgets/thick_ring.dart';
+import 'package:book_tickets/widgets/ticket_column_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({super.key, required this.ticket});
+  const TicketView({
+    super.key,
+    required this.ticket,
+    this.isColored = true,
+  });
 
   final Map<String, dynamic> ticket;
+  final bool isColored;
 
   @override
   Widget build(BuildContext context) {
     final Size size = AppLayout.getSize(context);
-    final TextStyle headline3White =
-        Styles.headlineStyle3.copyWith(color: Colors.white);
-    final TextStyle headline4White =
-        Styles.headlineStyle4.copyWith(color: Colors.white);
+    final TextStyle headline3White = isColored
+        ? Styles.headlineStyle3.copyWith(color: Colors.white)
+        : Styles.headlineStyle3;
+    final TextStyle headline4White = isColored
+        ? Styles.headlineStyle4.copyWith(color: Colors.white)
+        : Styles.headlineStyle4;
 
     /* 
       ticket or card
@@ -25,7 +35,7 @@ class TicketView extends StatelessWidget {
       // we can use Container widget as well instead of SizedBox
       margin: EdgeInsets.only(right: AppLayout.getWidth(16)),
       width: size.width * 0.82,
-      height: AppLayout.getHeight(180),
+      height: AppLayout.getHeight(GetPlatform.isAndroid == true ? 163 : 165),
       child: Column(
         children: [
           /* 
@@ -34,7 +44,7 @@ class TicketView extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(AppLayout.getHeight(16)),
             decoration: BoxDecoration(
-              color: Styles.blueColor,
+              color: isColored ? Styles.blueColor : Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppLayout.getWidth(21)),
                 topRight: Radius.circular(AppLayout.getWidth(21)),
@@ -50,7 +60,9 @@ class TicketView extends StatelessWidget {
                       style: headline3White,
                     ),
                     const Spacer(),
-                    const ThickRing(),
+                    ThickRing(
+                      isColored: isColored,
+                    ),
                     Expanded(
                       child: Stack(
                         children: [
@@ -76,9 +88,13 @@ class TicketView extends StatelessWidget {
                                       (index) => SizedBox(
                                         width: AppLayout.getWidth(3),
                                         height: AppLayout.getHeight(1),
-                                        child: const DecoratedBox(
-                                            decoration: BoxDecoration(
-                                                color: Colors.white)),
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                            color: isColored
+                                                ? Colors.white
+                                                : Colors.grey.shade400,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -91,14 +107,18 @@ class TicketView extends StatelessWidget {
                               angle: 1.5,
                               child: Icon(
                                 AppIcons.airport,
-                                color: Colors.white,
+                                color: isColored
+                                    ? Colors.white
+                                    : const Color(0xff8accf7),
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                    const ThickRing(),
+                    ThickRing(
+                      isColored: isColored,
+                    ),
                     const Spacer(),
                     Text(
                       ticket['to']['code'],
@@ -138,7 +158,7 @@ class TicketView extends StatelessWidget {
             middle section
            */
           Container(
-            color: Styles.orangeColor,
+            color: isColored ? Styles.orangeColor : Colors.white,
             child: Row(
               children: [
                 SizedBox(
@@ -146,7 +166,7 @@ class TicketView extends StatelessWidget {
                   height: AppLayout.getHeight(20),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: Styles.bgColor,
+                      color: isColored ? Styles.bgColor : Colors.white,
                       borderRadius: BorderRadius.only(
                         topRight: Radius.circular(AppLayout.getHeight(10)),
                         bottomRight: Radius.circular(AppLayout.getHeight(10)),
@@ -160,37 +180,15 @@ class TicketView extends StatelessWidget {
                  */
                 Expanded(
                   child: Padding(
-                    padding: EdgeInsets.all(AppLayout.getHeight(10)),
-                    child: LayoutBuilder(
-                      builder:
-                          (BuildContext context, BoxConstraints constraints) {
-                        final int dash =
-                            (constraints.constrainWidth() / 15).floor();
-                        return Flex(
-                          direction: Axis.horizontal,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          mainAxisSize: MainAxisSize.max,
-                          children: List.generate(
-                            dash,
-                            (index) => SizedBox(
-                              width: AppLayout.getWidth(5),
-                              height: AppLayout.getHeight(1),
-                              child: const DecoratedBox(
-                                decoration: BoxDecoration(color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                      padding: EdgeInsets.all(AppLayout.getHeight(10)),
+                      child: DashedLine(isColored: isColored)),
                 ),
                 SizedBox(
                   width: AppLayout.getWidth(10),
                   height: AppLayout.getHeight(20),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: Styles.bgColor,
+                      color: isColored ? Styles.bgColor : Colors.white,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(AppLayout.getHeight(10)),
                         bottomLeft: Radius.circular(AppLayout.getHeight(10)),
@@ -207,37 +205,36 @@ class TicketView extends StatelessWidget {
           Container(
             padding: const EdgeInsets.fromLTRB(16, 10, 16, 16),
             decoration: BoxDecoration(
-              color: Styles.orangeColor,
+              color: isColored ? Styles.orangeColor : Colors.white,
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(AppLayout.getHeight(21)),
-                bottomRight: Radius.circular(AppLayout.getHeight(21)),
+                bottomLeft: isColored
+                    ? Radius.circular(AppLayout.getHeight(21))
+                    : Radius.zero,
+                bottomRight: isColored
+                    ? Radius.circular(AppLayout.getHeight(21))
+                    : Radius.zero,
               ),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(ticket["date"], style: headline3White),
-                    const Gap(5),
-                    Text('Date', style: headline4White),
-                  ],
+                TicketColumnLayout(
+                  alignment: CrossAxisAlignment.start,
+                  firstText: ticket["date"],
+                  secondText: "Date",
+                  isColored: isColored,
                 ),
-                Column(
-                  children: [
-                    Text(ticket['departure_time'], style: headline3White),
-                    const Gap(5),
-                    Text('Departure Time', style: headline4White),
-                  ],
+                TicketColumnLayout(
+                  alignment: CrossAxisAlignment.center,
+                  firstText: ticket["departure_time"],
+                  secondText: "Departure Time",
+                  isColored: isColored,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(ticket['number'].toString(), style: headline3White),
-                    const Gap(5),
-                    Text('Number', style: headline4White),
-                  ],
+                TicketColumnLayout(
+                  alignment: CrossAxisAlignment.center,
+                  firstText: ticket["number"].toString(),
+                  secondText: "Number",
+                  isColored: isColored,
                 ),
               ],
             ),
