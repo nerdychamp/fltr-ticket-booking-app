@@ -124,6 +124,9 @@ class SearchScreen extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              /* 
+                left column
+               */
               Container(
                 height: AppLayout.getHeight(400),
                 width: size.width * 0.42,
@@ -152,11 +155,17 @@ class SearchScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              /* 
+                right column
+               */
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Stack(
                     children: [
+                      /* 
+                        first card
+                       */
                       Container(
                         padding: const EdgeInsets.all(15),
                         width: size.width * .44,
@@ -207,6 +216,9 @@ class SearchScreen extends StatelessWidget {
                     ],
                   ),
                   const Gap(15),
+                  /* 
+                    second card
+                   */
                   Container(
                     padding: const EdgeInsets.all(15),
                     width: size.width * 0.44,
@@ -226,6 +238,9 @@ class SearchScreen extends StatelessWidget {
                           ),
                         ),
                         const Gap(15),
+                        /* 
+                          emoji section
+                         */
                         RichText(
                           text: const TextSpan(
                             children: [
