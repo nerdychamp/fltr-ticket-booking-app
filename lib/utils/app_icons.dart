@@ -15,4 +15,6 @@ class AppIcons {
   static IconData personFilled = FluentSystemIcons.ic_fluent_person_filled;
 
   static IconData airport = Icons.local_airport_rounded;
+  static IconData flightTakeOffRounded = Icons.flight_takeoff_rounded;
+  static IconData flightLandRounded = Icons.flight_land_rounded;
 }
