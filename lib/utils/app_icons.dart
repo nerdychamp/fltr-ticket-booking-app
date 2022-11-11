@@ -17,4 +17,8 @@ class AppIcons {
   static IconData airport = Icons.local_airport_rounded;
   static IconData flightTakeOffRounded = Icons.flight_takeoff_rounded;
   static IconData flightLandRounded = Icons.flight_land_rounded;
+
+  static IconData shieldFilled = FluentSystemIcons.ic_fluent_shield_filled;
+  static IconData lightbulb =
+      FluentSystemIcons.ic_fluent_lightbulb_filament_filled;
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../utils/app_icons.dart';
 import '../utils/app_layout.dart';
 import '../utils/app_style.dart';
 
